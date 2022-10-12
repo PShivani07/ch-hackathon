@@ -1,0 +1,39 @@
+<div class="container mt-5">
+    <div class="row">
+        <h3 class="card-title">Merge Group</h3>
+    </div>
+    <div class="col-sm-10">
+        <div>Select main group(only one): </div>
+        <div class="list-group" *ngFor="let rm of leaderGroup">
+            <label>
+                <input type="checkbox" name="rooms" [(ngModel)]="rm.checked" />
+                <h6 class="mb-0">{{ rm.key }}</h6>
+            </label>
+        </div>
+        <br>
+        <div>Select groups to merge(not main group): </div>
+        <div class="list-group" *ngFor="let rm of groups">
+            <label>
+                <input type="checkbox" name="rooms" [(ngModel)]="rm.checked" />
+                <h6 class="mb-0">{{ rm.key }}</h6>
+            </label>
+        </div>
+        <br>
+        <button class="btn btn-primary" style='margin-top:16px' (click)="merge()">Submit</button>
+        <br>
+        <div class="row" *ngIf="submit">
+            <div class="col-xs-12">
+              <p class="alert alert-danger mt-2">
+                  <strong>{{ msg }}</strong> 
+              </p>
+            </div>
+        </div>
+        <div class="row"  *ngIf="showMsg">
+            <div class="col-xs-12">
+              <p class="alert alert-success mt-2">
+                  <strong>Merge Successfully!</strong> 
+              </p>
+            </div>
+        </div>
+    </div>
+</div>

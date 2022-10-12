@@ -1,0 +1,37 @@
+<div class="container mt-5">
+    <div class="row">
+        <h3 class="card-title">New Member</h3>
+    </div>
+    <div class="col-sm-10">
+        <label for="rooms">Select space to add:</label>
+        <br>
+
+        <div class="list-group" *ngFor="let rm of rooms">
+            <label>
+                <input type="checkbox" name="rooms" [(ngModel)]="rm.checked" />
+                <h6 class="mb-0">{{ rm.key }}</h6>
+            </label>
+        </div>
+
+        <br><br>
+        <label for="member-id">Enter member's email Id:</label>
+        <input class="form-control" type="email" name="email" #mailID placeholder="email Id">
+        <button class="btn btn-primary" style="margin-top: 10px;" (click)="member()">submit</button>
+        <br>
+        <div class="row"  *ngIf="errMsg">
+            <div class="col-xs-12">
+              <p class="alert alert-warning mt-2">
+                  <strong>{{ msg }}</strong> 
+              </p>
+            </div>
+        </div>
+        <div class="row"  *ngIf="showMsg">
+            <div class="col-xs-12">
+              <p class="alert alert-success mt-2">
+                  <strong>Member added Successfully!</strong> 
+              </p>
+            </div>
+        </div>
+        <div style="padding-bottom: 200px;"></div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+* {
+    margin-top: 10px;
+}
+.meeting-form span {
+    display: block;
+    padding-top: 10px;
+}
+.meeting-form .title {
+    display: grid;
+}
+.meeting-form .attendees {
+    display: grid;
+}
+#container {
+max-width: 260px;
+margin: 0 auto;
+}
+
+.e-input-group .e-input-group-icon,
+.e-input-group.e-control-wrapper .e-input-group-icon,
+.e-input-group.e-control-wrapper:not(.e-disabled) .e-input-group-icon:hover {
+background: none;
+}
+
+.e-input-group:not(.e-disabled) .e-input-group-icon:active,
+.e-input-group.e-control-wrapper:not(.e-disabled) .e-input-group-icon:active {
+background: rgb(0, 120, 214);
+}

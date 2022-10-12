@@ -1,0 +1,25 @@
+<div class="container mt-5">
+    <div class="row">
+        <h3 class="card-title">New Space</h3>
+    </div>
+    
+    <div class="col-sm-10">
+        <label for="spaces">Enter Space name:</label>
+        <input class="form-control" type="text" name="title" #title placeholder="Space Name">
+        <button class="btn btn-primary" style="margin-top: 10px;" (click)="createRoom();">create</button>
+    </div>
+    <div class="row"  *ngIf="errMsg">
+        <div class="col-xs-12">
+          <p class="alert alert-danger mt-2">
+              <strong>{{ msg }}</strong> 
+          </p>
+        </div>
+    </div>
+    <div class="row"  *ngIf="showMsg">
+        <div class="col-xs-12">
+          <p class="alert alert-success mt-2">
+              <strong>Space Created!</strong> 
+          </p>
+        </div>
+    </div>
+</div>

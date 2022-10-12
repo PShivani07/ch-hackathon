@@ -1,0 +1,63 @@
+<div class="container mt-5">
+    <div class="row">
+        <h3 class="card-title">Schedule a Meeting</h3>
+    </div>
+
+    <form class="meeting-form" [formGroup]="meetingForm" (ngSubmit)="onSubmit()" #formDir="ngForm">
+        <div  *ngIf="(meetingForm.invalid || dateLessThan) && formDir.submitted" class="alert alert-danger">Please fill the form completely!</div>
+        <div class="col-sm-10">
+            <label for="meeting-title">Meeting Title: </label>
+            <input class="form-control" type="text" id="meetingTitle" formControlName="meetingTitle"
+                placeholder="Enter Meeting Title" required>
+            <div *ngIf="meetingTitle && meetingTitle.invalid && (meetingTitle.dirty || meetingTitle.touched)"
+                class="alert alert-danger">
+                <div *ngIf="meetingTitle.errors?.['required']">
+                    Meeting Title is required.
+                </div>
+                <div *ngIf="meetingTitle.errors?.['minlength']">
+                    Meeting Title must be at least 4 characters long.
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6" style="margin-top: 10px;">
+            <label for="date-time-start">Date and Time: Start </label>
+            <input class="form-control" matInput type="datetime-local" id="start" formControlName="start" >
+            
+            <label for="date-time-end" style="margin-top: 5px;"> End </label>
+            <input class="form-control" matInput type="datetime-local" id="end" formControlName="end" >
+
+            <div *ngIf="endTime && formDir.submitted">
+                <div *ngIf="endTime.errors?.['required']" class="alert alert-danger">
+                    Required.
+                </div>
+                <div *ngIf="dateLessThan" class="alert alert-danger">
+                    Invalid. End time should be atleast 30 mins past start time and not more than 18 hours(you need a break!).
+                </div>
+            </div>
+            
+        </div>
+        <div class="col-sm-10" style="margin-top: 10px;">
+            <label for="attendees">Attendees: </label>
+            <input class="form-control" type="text" id="attendees" formControlName="attendees"
+                placeholder="Separate email addresses with a comma">
+            <div *ngIf="attendees && (attendees.dirty || attendees.touched)">
+                <div *ngIf="attendees.errors?.['required']" class="alert alert-danger">
+                    Required.
+                </div>
+                <div *ngIf="validateEmails" class="alert alert-danger">
+                    Invalid email Id. (Separate email addresses with a comma)
+                </div>
+            </div>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary" [disabled]="meetingForm.invalid && formDir.submitted">Submit</button>
+            <div class="row" *ngIf="showMsg">
+                <div class="col-xs-12">
+                    <p class="alert alert-success mt-2">
+                        <strong>Meeting Scheduled Successfully!</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
