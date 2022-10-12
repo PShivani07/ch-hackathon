@@ -106,9 +106,11 @@
   <div class="row flex-nowrap">
     <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
       <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-        <a routerLink="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-          <span class="fs-5 d-none d-sm-inline pt-3">Webex</span>
+        <a class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+          <img src="../assets/Webex-logo.png" width="40" height="40" alt="" style="padding-top: 1px">
+          <span class="fs-5 d-none d-sm-inline">  Webex</span>
         </a>
+        
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
           <li class="nav-item">
             <a routerLink="/home" class="nav-link align-middle px-0">
@@ -139,10 +141,6 @@
           <li>
             <a routerLink="/broadcast" class="nav-link px-0 align-middle">
               <i class="fs-4 bi bi-broadcast"></i> <span class="ms-1 d-none d-sm-inline">Create Broadcast</span> </a>
-          </li>
-          <li>
-            <a routerLink="/broadcast-list" class="nav-link px-0 align-middle">
-              <i class="fs-4 bi bi-person-lines-fill"></i> <span class="ms-1 d-none d-sm-inline">Broadcast List</span> </a>
           </li> -->
           <li>
             <a routerLink="/category" class="nav-link px-0 align-middle">
@@ -150,8 +148,12 @@
           </li>
           <li>
             <a routerLink="/category-list" class="nav-link px-0 align-middle">
-              <i class="fs-4 bi bi-collection"></i> <span class="ms-1 d-none d-sm-inline">Category</span> </a>
+              <i class="fs-4 bi bi-collection"></i> <span class="ms-1 d-none d-sm-inline">Category List</span> </a>
           </li>
+          <li>
+            <a routerLink="/broadcast-list" class="nav-link px-0 align-middle">
+              <i class="fs-4 bi bi-trash"></i><span class="ms-1 d-none d-sm-inline">Delete Category</span> </a>
+          </li> 
         </ul>
         <!-- <hr> -->
         <div>

@@ -14,6 +14,7 @@ import { CollectService } from '../services/collect.service';
 export class CategoryListComponent implements OnInit {
 
   public broadcasts: Broadcast[] = [];
+  category: any[] = [];
 
   // Subscriptions
   bc_getList!: Subscription;
@@ -31,7 +32,17 @@ export class CategoryListComponent implements OnInit {
   }
 
   broadcast() {
-    this.bc_getList = this.broadcastService.getBroadcastList().subscribe( data => this.broadcasts = [...data] );
+    this.bc_getList = this.broadcastService.getBroadcastList().subscribe( 
+      data => {
+        this.broadcasts = [...data];
+        for(let bc of this.broadcasts) {
+          this.broadcastService.getBroadcastRooms(bc.id).subscribe( data => {
+            this.rooms = [...data];
+            this.category = [...this.category, {value: bc.broadcast_name, key: this.rooms}]
+          } );
+        }
+      }
+      );
   }
 
   del_broadcast(id: number, name: string) {
